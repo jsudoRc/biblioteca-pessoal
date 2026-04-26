@@ -66,6 +66,11 @@ avaliacoes.push(
 function draw():void{
 console.log("=================================================================================")
 }
+
+function libraryMenu():void{
+    console.log('MINHA BIBLIOTECA')
+    console.log('----------------')
+}
 //---------------------------------------------
 //Foi uma forma de exibir a biblioteca que eu achei , sem usar forEach
 //Não vou usar ela aqui, mas deixo esse comentário só para eu 
@@ -90,9 +95,9 @@ console.log("===================================================================
 function exibirBiblioteca():void{
 
     draw()
-    console.log('MINHA BIBLIOTECA')
-    console.log('----------------')
-    
+    libraryMenu()
+
+
 //Como indice principal para as arrays paralelas, vou usar o titulo
     titulos.forEach((titulo:string,i:number)=> {
 
@@ -103,5 +108,53 @@ function exibirBiblioteca():void{
     draw()
 }
 
-exibirBiblioteca()
+
+
+ function addLivro(titulo:string,
+                   ano:number, 
+                   autor:string,
+                   pag:number,
+                   lestes:boolean,
+                   avaliacao:number):void{
+
+          
+            if(ano > 0 && pag > 0 && avaliacao <5 && avaliacao>0){
+            titulos.push(titulo)
+            anos.push(ano)
+            autores.push(autor)
+            paginas.push(pag)
+            lido.push(lestes)
+            avaliacoes.push(avaliacao)
+
+            draw()
+            console.log('SUCESSO!LIVRO ADICIONADO')
+            console.log('------------------------')
+            exibirBiblioteca()
+
+            }
+            else{
+                console.log('Ano,páginas ou numero de avalialçao foram inseridos incorretamente,tente novamente')
+            }
+ }
+  
+ //Remove o ultimo livro da lista
+ function rmvLivro():void{
+
+            titulos.pop()
+            anos.pop()
+            autores.pop()
+            paginas.pop()
+            lido.pop()
+            avaliacoes.pop()     
+            
+            exibirBiblioteca()
+ }
+
+addLivro('teste',2,'teste',1,false,2)
+addLivro('teste2',3,'teste2',34,true,1)
+
+rmvLivro()
+
+ 
+
 
