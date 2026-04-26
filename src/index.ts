@@ -64,12 +64,12 @@ avaliacoes.push(
 )
 
 function draw():void{
-    console.log("===============================================")
+console.log("=================================================================================")
 }
 //---------------------------------------------
 //Foi uma forma de exibir a biblioteca que eu achei , sem usar forEach
 //Não vou usar ela aqui, mas deixo esse comentário só para eu 
-// lembrar deperguntar para o professor depois, se ela é valida ! 
+// lembrar de perguntar para o professor depois, se ela é valida ! 
 
 // function exibirBiblioteca():void{
 
@@ -87,6 +87,21 @@ function draw():void{
 // }
 //------------------------
 
+function exibirBiblioteca():void{
 
+    draw()
+    console.log('MINHA BIBLIOTECA')
+    console.log('----------------')
+    
+//Como indice principal para as arrays paralelas, vou usar o titulo
+    titulos.forEach((titulo:string,i:number)=> {
 
+        let leu:string  = lido[i] === true? 'LIDO' :'PENDENTE'
+        console.log(`${i+1}.${titulo} (${anos[i]}) - ${autores[i]} - ${paginas[i]} pag - ${leu} (${avaliacoes[i]}/5)`)
+  }); 
+
+    draw()
+}
+
+exibirBiblioteca()
 
