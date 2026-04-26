@@ -1,0 +1,28 @@
+{
+  "name": "biblioteca-pessoal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsudoRc/biblioteca-pessoal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jsudoRc/biblioteca-pessoal/issues"
+  },
+  "homepage": "https://github.com/jsudoRc/biblioteca-pessoal#readme",
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}
