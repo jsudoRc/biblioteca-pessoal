@@ -118,7 +118,7 @@ function exibirBiblioteca():void{
                    avaliacao:number):void{
 
           
-            if(ano > 0 && pag > 0 && avaliacao <5 && avaliacao>0){
+            if(ano > 0 && pag > 0 && avaliacao<=5 && avaliacao>=0){
             titulos.push(titulo)
             anos.push(ano)
             autores.push(autor)
@@ -150,11 +150,48 @@ function exibirBiblioteca():void{
             exibirBiblioteca()
  }
 
-addLivro('teste',2,'teste',1,false,2)
-addLivro('teste2',3,'teste2',34,true,1)
-
-rmvLivro()
-
+function buscarPorTitulo(filtrotitulo:string):void{
  
+    if(titulos.includes(filtrotitulo) ===true){
+
+        console.log('TEMOS ESTE LIVRO NA BIBLIOTECA !')
+        draw()
+
+        const i:number = titulos.indexOf(filtrotitulo)
+        let leu:string  = lido[i] === true? 'LIDO' :'PENDENTE'        
+        console.log(`${i+1}.${titulos[i]} (${anos[i]}) - ${autores[i]} - ${paginas[i]} pag - ${leu} (${avaliacoes[i]}/5)`)
+
+    }
+    else{
+        console.log('Oops...Livro não encontrado...')
+    }
+  
+}
+
+function buscarPorAutor(filtroAutor:string):void {
+
+      const indices = autores
+        .map((autor, i) => autor === filtroAutor ? i : -1)
+        .filter(i => i !== -1);
+
+    
+    if(indices.length > 0){
+        console.log('TEMOS LIVROS DESSE AUTOR')
+        draw()
+
+             indices.forEach(i => {
+            let leu: string = lido[i] ? 'LIDO' : 'PENDENTE'
+            console.log(`${i+1}.${titulos[i]} (${anos[i]}) - ${autores[i]} - ${paginas[i]} pag - ${leu} (${avaliacoes[i]}/5)`)
+        })
+    }else{
+
+         console.log('Oops...Livro não encontrado...')
+    }
+
+}
+
+buscarPorAutor('Laércio Vasconcelos')
+
+
 
 
