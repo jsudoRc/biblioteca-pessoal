@@ -13,8 +13,55 @@ titulos.push(
     'Harry Potter e a Pedra Filosofal',
     'Percy Jackson e o Mar de Monstros',
     'O Algebrista',
-    'Matemática Elementar',
+    'Matemática para Vencer',
     'Harry Potter e a câmara secreta',
     'Percy Jackson e o Ladrão de Raios'
 )
+
+paginas.push(
+       263,
+       304,
+       700,
+       640,
+       252,
+       384
+)
+
+autores.push(
+    'J.K. Rowling',
+    'Rick Riordan',
+    'Laércio Vasconcelos',
+    'Laércio Vasconcelos',
+    'J.K.Rowling',
+    'Rick Riordan'
+)
+
+lido.push(
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+)
+ 
+anos.push(
+    1997,
+    2006,
+    2016,
+    2018,
+    1998,
+    2005
+)
+
+avaliacoes.push(
+    5,
+    4,
+    5,
+    2,
+    3,
+    4
+)
+
+// 
 
