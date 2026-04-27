@@ -57,7 +57,7 @@ anos.push(
 avaliacoes.push(
     5,
     4,
-    5,
+    0,
     2,
     3,
     4
@@ -103,7 +103,8 @@ function exibirBiblioteca():void{
 
         let leu:string  = lido[i] === true? 'LIDO' :'PENDENTE'
         console.log(`${i+1}.${titulo} (${anos[i]}) - ${autores[i]} - ${paginas[i]} pag - ${leu} (${avaliacoes[i]}/5)`)
-  }); 
+  
+    }); 
 
     draw()
 }
@@ -185,12 +186,64 @@ function buscarPorAutor(filtroAutor:string):void {
         })
     }else{
 
-         console.log('Oops...Livro não encontrado...')
+         console.log('Oops...Livro não encontrado...');
     }
 
 }
+    function listarLidos(): void{
+    
+    
+    titulos.forEach((titulo:string,i:number)=> {
 
-buscarPorAutor('Laércio Vasconcelos')
+        let leu:string  = lido[i] === true? 'LIDO' :'PENDENTE'
+
+        if(leu != 'PENDENTE'){
+    
+        
+        console.log(`${i+1}.${titulo} (${anos[i]}) - ${autores[i]} - ${paginas[i]} pag - ${leu} (${avaliacoes[i]}/5)`)
+        }
+
+    }); 
+        
+   }
+
+     function listarPendentes(): void{
+
+        
+        titulos.forEach((titulo:string,i:number)=> {
+
+        let leu:string  = lido[i] === true? 'LIDO' :'PENDENTE'
+
+        if(leu != 'LIDO'){
+    
+        
+        console.log(`${i+1}.${titulo} (${anos[i]}) - ${autores[i]} - ${paginas[i]} pag - ${leu} (${avaliacoes[i]}/5)`)
+        }
+
+    }); 
+     }
+  
+    function marcarComoLido(titulo:string, avaliacao:number):void{
+        
+        if(titulos.includes(titulo)){
+           
+            if(avaliacao >= 1 && avaliacao <=5){
+
+                const indice:number = titulos.indexOf(titulo);
+
+                lido[indice] = true;
+
+                avaliacoes[indice] = avaliacao;
+
+                exibirBiblioteca()
+            }else{
+                console.log('Numero de avaliação inválida !')
+            }
+        }else{
+            console.log('Este livro não esta na biblioteca!')
+        }
+    }
+      marcarComoLido('O Algebrista', 1)
 
 
 
