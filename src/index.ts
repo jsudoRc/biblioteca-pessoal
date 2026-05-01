@@ -21,7 +21,7 @@ titulos.push(
 paginas.push(
        263,
        304,
-       700,
+       0,
        640,
        252,
        384
@@ -243,8 +243,69 @@ function buscarPorAutor(filtroAutor:string):void {
             console.log('Este livro não esta na biblioteca!')
         }
     }
-      marcarComoLido('O Algebrista', 1)
 
 
+    function totalLivros():number{
+
+        return titulos.length
+    }
+    
+    function totalLidos():number{
+
+        let acumulador = 0
+
+        lido.forEach((status) =>{
+
+            if(status === true){
+
+                acumulador++
+            }
+        })
+        return acumulador
+    }
+
+    function percentualLidos():number{
+
+          return (totalLidos()/totalLivros())*100
+    }
+
+    function mediaAvaliacoes():number{
+
+    let media:number = avaliacoes.filter((n)=> n>0 )
+                                  .reduce((soma,ava,_,arr)=> soma+ava/ arr.length,0)
+
+     return media
+    }
+    
+    function livroMaiorAvaliacao():string {
+
+     const melhor = avaliacoes.reduce((acc, nota, i) => {
+        if (nota > acc.nota) {
+            return { nota: nota, indice: i }
+        }
+        return acc
+    }, { nota: -1, indice: -1 })
+
+    if (melhor.indice === -1) {
+        return 'Nenhum livro avaliado encontrado...'
+    }
+        
+        return  `O livro mais bem avaliado  é: ${titulos[melhor.indice]} com  ${avaliacoes[melhor.indice]} estrelas de 5`
+    }
+
+    function totalPaginasLidas():number{
+        
+    const paginasLidas:number =paginas.reduce((sum,pag)=>{
+            return sum + pag
+        })
 
 
+        return paginasLidas
+    }
+    console.log(`Exibindo as funções de estatisticas desenvolvidas`)
+    console.log(`Quantidade total de Livros : ${totalLivros()}`)
+    console.log(`Quantidade total de Lidos : ${totalLidos()}`)
+    console.log(`Percentual Lido : ${percentualLidos().toFixed(2)}%`)
+    console.log(`Media avaliações : ${mediaAvaliacoes().toFixed(1)}`)
+    console.log(livroMaiorAvaliacao())
+    console.log(`Total de paginas lidas : ${totalPaginasLidas()} pags`)
