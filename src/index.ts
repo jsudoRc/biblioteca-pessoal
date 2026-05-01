@@ -69,8 +69,9 @@ console.log("===================================================================
 
 function libraryMenu():void{
     console.log('MINHA BIBLIOTECA')
-    console.log('----------------')
+    draw()
 }
+
 //---------------------------------------------
 //Foi uma forma de exibir a biblioteca que eu achei , sem usar forEach
 //Não vou usar ela aqui, mas deixo esse comentário só para eu 
@@ -244,6 +245,10 @@ function buscarPorAutor(filtroAutor:string):void {
         }
     }
 
+    function staticMenu():void{
+        console.log('ESTATISTICAS')
+        draw()
+    }
 
     function totalLivros():number{
 
@@ -290,7 +295,8 @@ function buscarPorAutor(filtroAutor:string):void {
         return 'Nenhum livro avaliado encontrado...'
     }
         
-        return  `O livro mais bem avaliado  é: ${titulos[melhor.indice]} com  ${avaliacoes[melhor.indice]} estrelas de 5`
+        return  `O livro melhor avaliado  é: ${titulos[melhor.indice]} com  ${avaliacoes[melhor.indice]} estrelas de 5`
+        
     }
 
     function totalPaginasLidas():number{
@@ -333,10 +339,17 @@ function buscarPorAutor(filtroAutor:string):void {
             .filter(titulo => titulo !== null)
 
         console.log(`${decada}s: ${livrosDaDecada.join(', ')}`)
+        
     })
-
-
-    draw()
-    }
+}
  
+    exibirBiblioteca()
+    staticMenu()
+    console.log(`Total livros lidos: ${totalLivros()}`)
+    console.log(`Livros lidos: ${totalLidos()} (${percentualLidos().toFixed(2)}%)`)
+    console.log(`Media das avaliações: ${mediaAvaliacoes().toFixed(2)}`)
+    console.log(livroMaiorAvaliacao())
+    console.log(`Total paginas lidas: ${totalPaginasLidas()}`)
+    draw()
     exibirPorDecada()
+    draw()
