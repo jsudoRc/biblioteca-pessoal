@@ -302,10 +302,41 @@ function buscarPorAutor(filtroAutor:string):void {
 
         return paginasLidas
     }
-    console.log(`Exibindo as funções de estatisticas desenvolvidas`)
-    console.log(`Quantidade total de Livros : ${totalLivros()}`)
-    console.log(`Quantidade total de Lidos : ${totalLidos()}`)
-    console.log(`Percentual Lido : ${percentualLidos().toFixed(2)}%`)
-    console.log(`Media avaliações : ${mediaAvaliacoes().toFixed(1)}`)
-    console.log(livroMaiorAvaliacao())
-    console.log(`Total de paginas lidas : ${totalPaginasLidas()} pags`)
+
+    function exibirPorDecada():void{
+        console.log('POR DECADA ')
+        draw()
+
+            const decadas: number[] = []
+
+    // Primeiro: descobrir quais décadas existem
+    anos.forEach((ano) => {
+        const decada = Math.floor(ano / 10) * 10
+        if (!decadas.includes(decada)) {
+            decadas.push(decada)
+        }
+    })
+
+    // Ordenar décadas (opcional, mas fica mais bonito)
+    decadas.sort((a, b) => a - b)
+
+    // Segundo: agrupar livros por década
+    decadas.forEach((decada) => {
+
+        const livrosDaDecada = titulos
+            .map((titulo, i) => {
+                if(anos[i]!== undefined){
+                const dec = Math.floor(anos[i] / 10) * 10
+                return dec === decada ? titulo : null}
+
+            })
+            .filter(titulo => titulo !== null)
+
+        console.log(`${decada}s: ${livrosDaDecada.join(', ')}`)
+    })
+
+
+    draw()
+    }
+ 
+    exibirPorDecada()
